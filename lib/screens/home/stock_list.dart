@@ -14,7 +14,7 @@ class _StockListState extends State<StockList> {
   @override
   Widget build(BuildContext context) {
 
-    final stocks=Provider.of<List<Stock>?>(context);
+    final stocks=Provider.of<List<Stock>?>(context) ?? [];
     //print(stocks.docs);
     // if (stocks?.docs != null) {
     //   for (var doc in stocks!.docs) {

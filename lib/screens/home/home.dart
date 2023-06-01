@@ -49,7 +49,14 @@ class Home extends StatelessWidget {
           ),
         ],
       ),
-        body: StockList(),
+        body: Container(
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage('assets/Bgstock.jpg'),
+              fit: BoxFit.cover,
+            ),
+          ),
+        child : StockList()),
     ),
     );
   }
