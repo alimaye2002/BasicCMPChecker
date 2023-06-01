@@ -57,6 +57,16 @@ class Home extends StatelessWidget {
             ),
           ),
         child : StockList()),
+          bottomNavigationBar: BottomAppBar(
+            child: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Text(
+               // 'Total Portfolio Value: \$${getTotalValue().toStringAsFixed(2)}',
+                'Total Portfolio Value',
+                style: TextStyle(fontSize: 18),
+              ),
+            ),
+          )
     ),
     );
   }
