@@ -10,13 +10,29 @@ class DatabaseService{
   //Collection Reference
   final CollectionReference stockCollection = FirebaseFirestore.instance.collection('stocks');
 
-  Future updateUserData (String name, int price, int quantity ) async {
-    return await stockCollection.doc(uid).set({
-       'Name' : name,
-      'Price' : price,
-      'Quantity' : quantity,
-    });
-  }
+  // Future updateUserData (String name, int price, int quantity ) async {
+  //   return await stockCollection.doc(uid).set({
+  //      'Name' : name,
+  //     'Price' : price,
+  //     'Quantity' : quantity,
+  //   });
+  // }
+
+  //for list of stocks per user
+
+   Future<void> addFirstStock(String name, int price, int quantity) async {
+     final stockData = Stock(Name: name, Price: price, Quantity: quantity);
+     await stockCollection.doc(uid).set({
+       'uid': uid,
+       'S': [
+         {
+           'Name': stockData.Name,
+           'Price': stockData.Price,
+           'Quantity': stockData.Quantity,
+         },
+       ],
+     });
+   }
 
   //stockList from a snapshot
 
@@ -30,26 +46,50 @@ class DatabaseService{
    //    );
    //  }).toList();
    // }
-   List<Stock> _stockListFromSnapshot(DocumentSnapshot snapshot){
-    // return snapshot.docs.map((doc){
+   // List<Stock> _stockListFromSnapshot(DocumentSnapshot snapshot){
+   //  // return snapshot.docs.map((doc){
+   //
+   //   final stock =  Stock(
+   //       Name: snapshot.get('Name')?? '',
+   //       Price: snapshot.get('Price') ?? 0,
+   //       Quantity: snapshot.get('Quantity') ?? 0,
+   //     );
+   //   return [stock];
+   //  // }).toList();
+   // }
 
-     final stock =  Stock(
-         Name: snapshot.get('Name')?? '',
-         Price: snapshot.get('Price') ?? 0,
-         Quantity: snapshot.get('Quantity') ?? 0,
-       );
-     return [stock];
-    // }).toList();
+   List<Stock> _stockListFromSnapshot(DocumentSnapshot snapshot) {
+     final userData = UserData.fromSnapshot(snapshot);
+
+     return userData.S;
    }
 
+
    //user data from snapshot
-UserData _userDataFromSnapshot(DocumentSnapshot snapshot){
-    return UserData(uid: uid,
-        Name: snapshot.get('Name'),
-        Price: snapshot.get('Price'),
-        Quantity: snapshot.get('Quantity'),
-    );
-}
+// UserData _userDataFromSnapshot(DocumentSnapshot snapshot){
+//     return UserData(uid: uid,
+//         Name: snapshot.get('Name'),
+//         Price: snapshot.get('Price'),
+//         Quantity: snapshot.get('Quantity'),
+//     );
+// }
+
+  UserData _userDataFromSnapshot(DocumentSnapshot snapshot) {
+ //   final data = snapshot.data();
+    final uid = snapshot.get('uid');
+    final stocksData = List<Map<String, dynamic>>.from(snapshot.get('S'));
+
+    final stocks = stocksData.map((stockData) {
+      return Stock(
+        Name: stockData['Name'] ?? '',
+        Price: stockData['Price'] ?? 0,
+        Quantity: stockData['Quantity'] ?? 0,
+      );
+    }).toList();
+
+    return UserData(uid: uid, S: stocks);
+  }
+
 
   //get stock stream
 

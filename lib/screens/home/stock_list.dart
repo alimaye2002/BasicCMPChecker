@@ -3,6 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:provider/provider.dart';
 import 'package:firstproject/models/stock.dart';
 import 'package:firstproject/screens/home/stock_tile.dart';
+import 'package:firstproject/models/user.dart';
 class StockList extends StatefulWidget {
   const StockList({Key? key}) : super(key: key);
 
@@ -14,7 +15,11 @@ class _StockListState extends State<StockList> {
   @override
   Widget build(BuildContext context) {
 
-    final stocks=Provider.of<List<Stock>?>(context) ?? [];
+    //final stocks=Provider.of<List<Stock>?>(context) ?? [];
+    final userData = Provider.of<UserData?>(context);
+    //final user = Provider.of<myUser?>(context);
+final stocks = userData?.S;
+print(userData);
     //print(stocks.docs);
     // if (stocks?.docs != null) {
     //   for (var doc in stocks!.docs) {
