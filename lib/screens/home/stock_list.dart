@@ -5,6 +5,8 @@ import 'package:provider/provider.dart';
 import 'package:firstproject/models/stock.dart';
 import 'package:firstproject/screens/home/stock_tile.dart';
 import 'package:firstproject/models/user.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 class StockList extends StatefulWidget {
   const StockList({Key? key}) : super(key: key);
 
@@ -13,7 +15,9 @@ class StockList extends StatefulWidget {
 }
 
 class _StockListState extends State<StockList> {
+
   @override
+  double NetValue=0;
   void _showAddPanel() {
     showModalBottomSheet(context: context, builder: (context) {
       return Container(
@@ -28,18 +32,12 @@ class _StockListState extends State<StockList> {
     final userData = Provider.of<UserData?>(context);
     //final user = Provider.of<myUser?>(context);
 final stocks = userData?.S;
-//print(userData);
-    //print(stocks.docs);
-    // if (stocks?.docs != null) {
-    //   for (var doc in stocks!.docs) {
-    //     print(doc.data());
-    //   }
-    // }
-    // stocks?.forEach((stock) {
-    //     print(stock.Name);
-    //     print(stock.Price);
-    //     print(stock.Quantity);
-    // });
+
+  for (var stock in stocks!) {
+    int quantity = stock.Quantity ?? 0;
+    int price = stock.Price ?? 0;
+    NetValue += quantity * price;
+  }
 
     return Column(
       children: [
@@ -49,14 +47,30 @@ final stocks = userData?.S;
       itemBuilder: (context, index) {
         final stock = stocks?[index];
         if (stock != null) {
+          //int quantity = stock?.Quantity ?? 0;
+          //int price = stock?.Price ?? 0;
+         // _NetValue += quantity * price;
+          //print(NetValue);
           return StockTile(stock: stock);
+
         } else {
           return Container(); // Placeholder widget when stock is null
         }
       },
     ),
         ),
-        ElevatedButton(
+        BottomAppBar(
+                 child: Padding(
+                   padding: const EdgeInsets.all(16.0),
+                   child: Text(
+                     'Net Invested ${NetValue.toStringAsFixed(2)}',
+                     style: TextStyle(fontSize: 18),
+                   ),
+
+                 ),
+               ),
+
+    ElevatedButton(
           child: Text('Add'),
           onPressed: () {
             // Implement your "Add" functionality here

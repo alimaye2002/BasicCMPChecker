@@ -23,7 +23,7 @@ class Home extends StatelessWidget {
       length: 3,
       child: Scaffold(
         appBar: AppBar(
-          title: Text('Stock Crew'),
+          title: Text('Stock Portfolio'),
           backgroundColor: Colors.brown[400],
           elevation: 0.0,
           actions: <Widget>[
@@ -63,15 +63,15 @@ class Home extends StatelessWidget {
               //        ),
             //        ],
            //       ),
-                  bottomNavigationBar: BottomAppBar(
-                    child: Padding(
-                      padding: const EdgeInsets.all(16.0),
-                      child: Text(
-                        'Total Portfolio Value',
-                        style: TextStyle(fontSize: 18),
-                      ),
-                    ),
-                  ),
+           //        bottomNavigationBar: BottomAppBar(
+           //          child: Padding(
+           //            padding: const EdgeInsets.all(16.0),
+           //            child: Text(
+           //              'Total Portfolio Value',
+           //              style: TextStyle(fontSize: 18),
+           //            ),
+           //          ),
+           //        ),
                 ),
               ),
 

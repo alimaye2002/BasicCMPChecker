@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:firstproject/models/stock.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import 'package:firstproject/screens/home/stock_list.dart';
 import 'package:provider/provider.dart';
 import 'package:firstproject/models/user.dart';
 class StockTile extends StatefulWidget {
