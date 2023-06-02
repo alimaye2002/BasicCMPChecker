@@ -64,11 +64,17 @@ class DatabaseService{
 
    //function to delete a stock
 
-   // Future<void> deleteStock(String Name) async {
-   //   await stockCollection.doc(uid).update({
-   //     'S': FieldValue.arrayRemove([Name]),
-   //   });
-   // }
+   Future<void> deleteStock(String name, int price, int quantity) async {
+     final stockData = {
+       'Name': name,
+       'Price': price,
+       'Quantity': quantity,
+     };
+
+     await stockCollection.doc(uid).update({
+       'S': FieldValue.arrayRemove([stockData]),
+     });
+   }
 
 
 

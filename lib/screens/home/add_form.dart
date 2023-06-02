@@ -112,7 +112,7 @@ class _AddFormState extends State<AddForm> {
              //  print('I am at addstock of add_form.dart');
                Navigator.pop(context);
              }
-             print('addstock of add_form.dart didnt reach');
+           //  print('addstock of add_form.dart didnt reach');
               },
             ),
 

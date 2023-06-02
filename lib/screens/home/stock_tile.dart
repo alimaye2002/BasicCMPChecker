@@ -1,8 +1,10 @@
+import 'package:firstproject/services/database.dart';
 import 'package:flutter/material.dart';
 import 'package:firstproject/models/stock.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-
+import 'package:provider/provider.dart';
+import 'package:firstproject/models/user.dart';
 class StockTile extends StatefulWidget {
   final Stock stock;
 
@@ -35,6 +37,13 @@ class _StockTileState extends State<StockTile> {
   }
   @override
   Widget build(BuildContext context) {
+    final user = Provider.of<myUser?>(context);
+    return StreamBuilder<UserData>(
+        stream: DatabaseService(uid:user!.uid).userData,
+    builder: (context,snapshot){
+
+
+
     return Padding(
       padding: EdgeInsets.only(top: 8.0),
       child: Card(
@@ -57,13 +66,20 @@ class _StockTileState extends State<StockTile> {
           ),
           trailing: IconButton(
             icon: Icon(Icons.sell),
-            onPressed: () {
+            onPressed: () async{
+              await DatabaseService(uid: user.uid).deleteStock(
+                widget.stock.Name ?? 'AAPL',
+                widget.stock.Price ?? 1,
+                widget.stock.Quantity ?? 1,
+              );
 
               // sellStock(stock.symbol);
             },
           ),
         ),
       ),
+    );
+    }
     );
   }
 }
