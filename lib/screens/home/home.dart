@@ -51,7 +51,18 @@ class Home extends StatelessWidget {
                 initialData: null,
                 child: Scaffold(
                   backgroundColor: Colors.transparent,
-                  body: StockList(),
+
+  //                body: Column(
+//                    children : [
+                  body :   StockList(),
+    //                  ElevatedButton(
+      //                  child: Text('Add'),
+        //                onPressed: () {
+                          // Implement your "Add" functionality here
+                //        },
+              //        ),
+            //        ],
+           //       ),
                   bottomNavigationBar: BottomAppBar(
                     child: Padding(
                       padding: const EdgeInsets.all(16.0),

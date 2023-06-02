@@ -41,7 +41,7 @@ class CurrencyScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text('Currency Converter'),
       ),
-      backgroundColor: Colors.transparent,
+     // backgroundColor: Colors.transparent,
       body: ListView.builder(
         itemCount: currencies.length,
         itemBuilder: (BuildContext context, int index) {
@@ -69,7 +69,7 @@ class CurrencyScreen extends StatelessWidget {
                     style: TextStyle(fontSize: 25),
                   ),
                   title: Text(currency),
-                  subtitle: Text(currentPrice.toString()),
+                  subtitle: Text(currentPrice.toStringAsFixed(2)),
                 //  trailing: Icon(Icons.arrow_forward),
                   onTap: () {
                     //This is kept for future scope

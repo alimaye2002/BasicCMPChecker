@@ -39,7 +39,7 @@ class IndicesApp extends StatelessWidget {
         appBar: AppBar(
           title: const Text('Indices'),
         ),
-        backgroundColor: Colors.transparent,
+       // backgroundColor: Colors.transparent,
         body: ListView.builder(
           itemCount: indices.length,
           itemBuilder: (BuildContext context, int index) {
@@ -65,7 +65,7 @@ class IndicesApp extends StatelessWidget {
                   return ListTile(
                     leading:const  Icon(Icons.trending_up),
                     title: Text(indexName),
-                    subtitle: Text(currentPrice.toString()),
+                    subtitle: Text(currentPrice.toStringAsFixed(2)),
                     //  trailing: Icon(Icons.arrow_forward),
                     onTap: () {
                       //This is kept for future scope

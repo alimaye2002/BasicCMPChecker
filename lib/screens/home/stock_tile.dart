@@ -52,12 +52,13 @@ class _StockTileState extends State<StockTile> {
               Text('Price: ${widget.stock.Price}'),
               _currentPrice == 0.0
                   ? Text('Loading...'):
-             Text('Unrealized Profit: ${widget.stock.Quantity*(widget.stock.Price-_currentPrice)}'),
+             Text('Unrealized Profit: ${(widget.stock.Quantity*(_currentPrice-widget.stock.Price)).toStringAsFixed(2)}'),
             ],
           ),
           trailing: IconButton(
             icon: Icon(Icons.sell),
             onPressed: () {
+
               // sellStock(stock.symbol);
             },
           ),

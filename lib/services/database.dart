@@ -34,7 +34,45 @@ class DatabaseService{
      });
    }
 
-  //stockList from a snapshot
+   Future<void> addStock(String name, int price, int quantity) async {
+     final stockData = Stock(Name: name, Price: price, Quantity: quantity);
+    // print('I am at addStock function1');
+
+     // Retrieve the current stock list
+     final snapshot = await stockCollection.doc(uid).get() as DocumentSnapshot<Map<String, dynamic>>;
+     final List<Map<String, dynamic>>? currentStocks = (snapshot.data()?['S'] as List<dynamic>).cast<Map<String, dynamic>>();
+     //Both the above lines have been explicitly casted after android studio gave error
+
+     //print('I am at addStock function2');
+
+     // Create a new list with the current stocks and the new stock
+     final List<Map<String, dynamic>> updatedStocks = [
+       if (currentStocks != null) ...currentStocks,
+       {
+         'Name': stockData.Name,
+         'Price': stockData.Price,
+         'Quantity': stockData.Quantity,
+       },
+     ];
+
+     // Update the document in Firestore with the updated stock list
+     await stockCollection.doc(uid).set({
+       'uid': uid,
+       'S': updatedStocks,
+     });
+   }
+
+   //function to delete a stock
+
+   // Future<void> deleteStock(String Name) async {
+   //   await stockCollection.doc(uid).update({
+   //     'S': FieldValue.arrayRemove([Name]),
+   //   });
+   // }
+
+
+
+   //stockList from a snapshot
 
    // List<Stock> _stockListFromSnapshot(QuerySnapshot snapshot){
    //  return snapshot.docs.map((doc){
