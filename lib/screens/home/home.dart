@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firstproject/screens/home/stock_list.dart';
 import 'package:firstproject/models/stock.dart';
+import 'package:firstproject/models/user.dart';
 import 'package:firstproject/screens/home/settings_form.dart';
 
 class Home extends StatelessWidget {
@@ -23,9 +24,11 @@ class Home extends StatelessWidget {
       });
     }
 
+    final user = Provider.of<myUser?>(context);
     return StreamProvider<List<Stock>?>.value(
        // catchError: (_,__) => null,
-        value :  DatabaseService().stocks,
+        value :  DatabaseService(uid:user!.uid).stocks,
+
       initialData: null,
 
       child : Scaffold(

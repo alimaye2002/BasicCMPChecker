@@ -20,15 +20,26 @@ class DatabaseService{
 
   //stockList from a snapshot
 
-   List<Stock> _stockListFromSnapshot(QuerySnapshot snapshot){
-    return snapshot.docs.map((doc){
+   // List<Stock> _stockListFromSnapshot(QuerySnapshot snapshot){
+   //  return snapshot.docs.map((doc){
+   //
+   //    return Stock(
+   //      Name: doc.get('Name')?? '',
+   //      Price: doc.get('Price') ?? 0,
+   //      Quantity: doc.get('Quantity') ?? 0,
+   //    );
+   //  }).toList();
+   // }
+   List<Stock> _stockListFromSnapshot(DocumentSnapshot snapshot){
+    // return snapshot.docs.map((doc){
 
-      return Stock(
-        Name: doc.get('Name')?? '',
-        Price: doc.get('Price') ?? 0,
-        Quantity: doc.get('Quantity') ?? 0,
-      );
-    }).toList();
+     final stock =  Stock(
+         Name: snapshot.get('Name')?? '',
+         Price: snapshot.get('Price') ?? 0,
+         Quantity: snapshot.get('Quantity') ?? 0,
+       );
+     return [stock];
+    // }).toList();
    }
 
    //user data from snapshot
@@ -43,7 +54,7 @@ UserData _userDataFromSnapshot(DocumentSnapshot snapshot){
   //get stock stream
 
   Stream<List<Stock>> get stocks{
-    return stockCollection.snapshots()
+    return stockCollection.doc(uid).snapshots()
     .map(_stockListFromSnapshot);
   }
 
