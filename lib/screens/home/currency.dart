@@ -44,9 +44,21 @@ class CurrencyScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+   return  Scaffold(
       appBar: AppBar(
-        title: Text('Currency Converter'),
+        title: Text('Currency'),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(right: 8, top: 20),
+            child: Text(
+              'Change',
+              style: TextStyle(
+                fontSize: 20,
+                //fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+        ],
       ),
      // backgroundColor: Colors.transparent,
       body: ListView.builder(

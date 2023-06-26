@@ -44,7 +44,19 @@ class IndicesApp extends StatelessWidget {
       ),
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('Indices'),
+          title: Text('Indices'),
+          actions: [
+            Padding(
+              padding: const EdgeInsets.only(right: 8, top: 20),
+              child: Text(
+                'Change',
+                style: TextStyle(
+                  fontSize: 20,
+                  //fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+          ],
         ),
        // backgroundColor: Colors.transparent,
         body: ListView.builder(
