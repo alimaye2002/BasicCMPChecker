@@ -19,9 +19,9 @@ class _AddFormState extends State<AddForm> {
   final _formKey = GlobalKey<FormState>();
 
   String? _currentName;
-  int? _price;
+  double? _price;
   int? _quantity;
-  int? _total;
+  double? _total;
   double? _currentPrice;
 
   void _updateTotal() {
@@ -75,7 +75,7 @@ class _AddFormState extends State<AddForm> {
               validator: (val) => val!.isEmpty ? 'Enter Valid Price' : null,
               onChanged: (val) {
                 setState(() {
-                  _price = int.tryParse(val ?? '');
+                  _price = double.tryParse(val ?? '');
                   _updateTotal();
                 });
               },
@@ -106,7 +106,7 @@ class _AddFormState extends State<AddForm> {
              //  print('I am at addstock of add_form.dart');
                await DatabaseService(uid: user.uid).addStock(
                   _currentName ?? 'AAPL',
-                 _price ?? 1,
+                 _price ?? 1.0,
                  _quantity ?? 1,
                );
              //  print('I am at addstock of add_form.dart');

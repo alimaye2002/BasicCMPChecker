@@ -35,7 +35,7 @@ final stocks = userData?.S;
 
   for (var stock in stocks!) {
     int quantity = stock.Quantity ?? 0;
-    int price = stock.Price ?? 0;
+    double price = stock.Price ?? 0.0;
     NetValue += quantity * price;
   }
 

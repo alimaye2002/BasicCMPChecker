@@ -20,7 +20,7 @@ class DatabaseService{
 
   //for list of stocks per user
 
-   Future<void> addFirstStock(String name, int price, int quantity) async {
+   Future<void> addFirstStock(String name, double price, int quantity) async {
      final stockData = Stock(Name: name, Price: price, Quantity: quantity);
      await stockCollection.doc(uid).set({
        'uid': uid,
@@ -34,37 +34,51 @@ class DatabaseService{
      });
    }
 
-   Future<void> addStock(String name, int price, int quantity) async {
+   Future<void> addStock(String name, double price, int quantity) async {
      final stockData = Stock(Name: name, Price: price, Quantity: quantity);
-    // print('I am at addStock function1');
 
      // Retrieve the current stock list
      final snapshot = await stockCollection.doc(uid).get() as DocumentSnapshot<Map<String, dynamic>>;
      final List<Map<String, dynamic>>? currentStocks = (snapshot.data()?['S'] as List<dynamic>).cast<Map<String, dynamic>>();
-     //Both the above lines have been explicitly casted after android studio gave error
 
-     //print('I am at addStock function2');
+     // Check if the stock with the given name already exists in the list
+     final existingStockIndex = currentStocks?.indexWhere((stock) => stock['Name'] == stockData.Name);
 
-     // Create a new list with the current stocks and the new stock
-     final List<Map<String, dynamic>> updatedStocks = [
-       if (currentStocks != null) ...currentStocks,
-       {
+     if (existingStockIndex != null && existingStockIndex >= 0) {
+       // Stock already exists, update the quantity and adjust the price
+
+       final existingStock = currentStocks![existingStockIndex];
+       final int existingQuantity = existingStock['Quantity'];
+       final int updatedQuantity = existingQuantity + stockData.Quantity;
+       final double existingPrice = existingStock['Price'];
+       final double updatedPrice = (existingPrice * existingQuantity + stockData.Price * stockData.Quantity) / updatedQuantity;
+
+
+
+
+       // Update the existing stock with the adjusted quantity and price
+       currentStocks[existingStockIndex]['Quantity'] = updatedQuantity;
+       currentStocks[existingStockIndex]['Price'] = updatedPrice;
+     } else {
+       // Stock does not exist, add it to the list
+       currentStocks?.add({
          'Name': stockData.Name,
          'Price': stockData.Price,
          'Quantity': stockData.Quantity,
-       },
-     ];
+       });
+     }
 
      // Update the document in Firestore with the updated stock list
      await stockCollection.doc(uid).set({
        'uid': uid,
-       'S': updatedStocks,
+       'S': currentStocks,
      });
    }
 
+
    //function to delete a stock
 
-   Future<void> deleteStock(String name, int price, int quantity) async {
+   Future<void> deleteStock(String name, double price, int quantity) async {
      final stockData = {
        'Name': name,
        'Price': price,

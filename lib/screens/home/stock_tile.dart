@@ -51,18 +51,55 @@ class _StockTileState extends State<StockTile> {
         margin: EdgeInsets.fromLTRB(20, 6, 20, 0),
 
         child: ListTile(
-          title: Text(widget.stock.Name),
+          title: Text(
+            widget.stock.Name,
+            style: TextStyle(
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
           subtitle: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               _currentPrice == 0.0
-                  ? Text('Loading...'):
-              Text('CMP: ${_currentPrice}'),
-              Text('Quantity: ${widget.stock.Quantity}'),
-              Text('Price: ${widget.stock.Price}'),
+                  ? Text(
+                'Loading...',
+                style: TextStyle(
+                  fontStyle: FontStyle.italic,
+                ),
+              )
+                  : Text(
+                'CMP: $_currentPrice',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              Text(
+                'Quantity: ${widget.stock.Quantity}',
+                style: TextStyle(
+                  color: Colors.grey[700],
+                ),
+              ),
+              Text(
+                'Price: ${widget.stock.Price.toStringAsFixed(2)}',
+                style: TextStyle(
+                  color: Colors.grey[700],
+                ),
+              ),
               _currentPrice == 0.0
-                  ? Text('Loading...'):
-             Text('Unrealized Profit: ${(widget.stock.Quantity*(_currentPrice-widget.stock.Price)).toStringAsFixed(2)}'),
+                  ? Text(
+                'Loading...',
+                style: TextStyle(
+                  fontStyle: FontStyle.italic,
+                ),
+              )
+                  : Text(
+                'Unrealized Profit: ${(widget.stock.Quantity * (_currentPrice - widget.stock.Price)).toStringAsFixed(2)}',
+                style: TextStyle(
+                  color: widget.stock.Quantity * (_currentPrice - widget.stock.Price) >= 0 ? Colors.green : Colors.red,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
             ],
           ),
           trailing: IconButton(
