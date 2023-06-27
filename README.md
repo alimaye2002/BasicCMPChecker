@@ -10,7 +10,7 @@ Welcome to the Stock Portfolio App! This utility gives a user-pleasant platform 
 
 **Register and sign in:** Securely get right of entry to your account by signing in with your credentials. New customers can sign in and create an account to begin constructing their stock portfolio.
 
-**Headlines:** Live knowledgeable with the modern-day financial news and market developments through curated headlines. Get precious insights and make knowledgeable investment selections.
+**Headlines:** Stay updated with the modern-day financial news and market developments through curated headlines. Get precious insights and make knowledgeable investment selections.
 
 ## Screens
 
