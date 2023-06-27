@@ -1,10 +1,18 @@
-# Stock Portfolio
+# Stock Portfolio App
 
-A new Flutter project.
+Welcome to the Stock Portfolio App! This utility gives a user-pleasant platform for coping with your stock portfolio and staying updated with the today's economic news.
 
-## Getting Started
+## Functions
 
-### Screens
+**Forex and Indices**: Stay informed about currency exchange rates and track various indices to understand the overall market performance.
+
+**Stock Portfolio**: Without difficulty control your stock portfolio, track your investment and monitor real-time stock prices.And make informed decisions. 
+
+**Register and sign in:** Securely get right of entry to your account by signing in with your credentials. New customers can sign in and create an account to begin constructing their stock portfolio.
+
+**Headlines:** Live knowledgeable with the modern-day financial news and market developments through curated headlines. Get precious insights and make knowledgeable investment selections.
+
+## Screens
 
 <p align="center">
   <img src="https://github.com/alimaye2002/BasicCMPChecker/assets/77532544/542ede94-7aa3-4a36-8651-d6436a6b99e2" alt="Register" width="150" height="300">
