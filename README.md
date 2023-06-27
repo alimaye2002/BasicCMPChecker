@@ -18,7 +18,7 @@ A new Flutter project.
   <img src="https://github.com/alimaye2002/BasicCMPChecker/assets/77532544/080a9612-9063-4da5-bbe8-c2ca1b2e763a" alt="Index" width="150" height="300">
 </p>
 
-You can find the video [here](www.google.com).
+You can find the video [here](https://www.google.com/).
 ### References
 
 1. [News API](https://newsapi.org/)
