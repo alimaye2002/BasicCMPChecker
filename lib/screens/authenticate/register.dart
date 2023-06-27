@@ -25,10 +25,11 @@ class Article {
 
   factory Article.fromJson(Map<String, dynamic> json) {
     return Article(
-      title: json['title'] as String,
-      description: json['description'] as String,
+      title: json['title'] != null ? json['title'] as String : '',
+      description: json['description'] != null ? json['description'] as String : '',
     );
   }
+
 }
 
 class _RegisterState extends State<Register> {
@@ -49,6 +50,7 @@ class _RegisterState extends State<Register> {
 
       setState(() {
         // Convert the JSON data to a list of articles
+        print('stcks there');
         articles = articlesData.map<Article>((articleJson) => Article.fromJson(articleJson)).toList();
       });
     } else {
