@@ -1,19 +1,11 @@
-# firstproject
+# Stock Portfolio
 
 A new Flutter project.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+**Screens**
+![Register](https://github.com/alimaye2002/BasicCMPChecker/assets/77532544/542ede94-7aa3-4a36-8651-d6436a6b99e2)
 
 
 **References**
@@ -21,4 +13,5 @@ samples, guidance on mobile development, and a full API reference.
 2) https://cryptocointracker.com/yahoo-finance/yahoo-finance-api
 3) https://docs.flutter.dev/
 4) https://firebase.google.com/
+
    
