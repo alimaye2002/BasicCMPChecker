@@ -26,7 +26,7 @@ Welcome to the Stock Portfolio App! This utility gives a user-pleasant platform 
   <img src="https://github.com/alimaye2002/BasicCMPChecker/assets/77532544/080a9612-9063-4da5-bbe8-c2ca1b2e763a" alt="Index" width="150" height="300">
 </p>
 
-You can find the video [here](https://drive.google.com/file/d/1-n9I72-D_MD5S5JvHDFFBsyszy0Q95n0/view?usp=sharing).
+You can find the working video [here](https://drive.google.com/file/d/1-n9I72-D_MD5S5JvHDFFBsyszy0Q95n0/view?usp=sharing).
 ### References
 
 1. [News API](https://newsapi.org/)
