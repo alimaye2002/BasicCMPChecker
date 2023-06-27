@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:firstproject/services/auth.dart';
 import 'package:firstproject/Shared/constants.dart';
 import 'package:firstproject/Shared/loading.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 
 
 class Register extends StatefulWidget {
@@ -12,14 +14,61 @@ class Register extends StatefulWidget {
   State<Register> createState() => _RegisterState();
 }
 
+class Article {
+  final String title;
+  final String description;
+
+  Article({
+    required this.title,
+    required this.description,
+  });
+
+  factory Article.fromJson(Map<String, dynamic> json) {
+    return Article(
+      title: json['title'] as String,
+      description: json['description'] as String,
+    );
+  }
+}
+
 class _RegisterState extends State<Register> {
+  List<Article> articles = [];
+
+
+
+ String myapikey='3e4023c8f7814a5fa278836833fe2eae';
+  Future<void> fetchStockMarketNews() async {
+    final url =
+    Uri.parse('https://newsapi.org/v2/top-headlines?country=in&category=business&apiKey=$myapikey');
+
+    final response = await http.get(url);
+
+    if (response.statusCode == 200) {
+      final jsonData = json.decode(response.body);
+      final articlesData = jsonData['articles'];
+
+      setState(() {
+        // Convert the JSON data to a list of articles
+        articles = articlesData.map<Article>((articleJson) => Article.fromJson(articleJson)).toList();
+      });
+    } else {
+      print('Failed to fetch stock market news: ${response.statusCode}');
+    }
+  }
+
   final AuthService _auth=AuthService();
   final _formkey=GlobalKey<FormState>();
 bool loading=false;
   String email=" ";
   String password= " ";
   String error='';
+
   @override
+
+  void initState() {
+    super.initState();
+    fetchStockMarketNews();
+  }
   Widget build(BuildContext context) {
     return loading ? Loading():  Scaffold(
       backgroundColor: Colors.brown[100],
@@ -40,7 +89,9 @@ bool loading=false;
       ),
       body: Container(
         padding: EdgeInsets.symmetric(vertical :20.0, horizontal: 50.0),
-        child: Form(
+    child: Column(
+        children: [
+          Form(
           key: _formkey,
           child: Column(
             children: <Widget> [
@@ -92,9 +143,39 @@ bool loading=false;
             ],
           ),
         ),
-      ),
+        Expanded(
+          child: ListView.builder(
+            itemCount: articles.length,
+            itemBuilder: (context, index) {
+              final article = articles[index];
+              return ListTile(
+                title: Text(
+                  article.title,
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black,
+                    fontFamily: 'Times',
+                  ),
+                ),
+                subtitle: Text(
+                  article.description,
+                  style: TextStyle(
+                    fontSize: 14,
+                    color: Colors.grey,
+                    fontStyle: FontStyle.italic,
+                    fontFamily: 'Times',
+                  ),
+                ),
+              );
+            },
+          ),
+        ),
 
+        ],
+    ),
 
+      )
     );
   }
 }
