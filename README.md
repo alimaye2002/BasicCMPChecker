@@ -27,6 +27,14 @@ Welcome to the Stock Portfolio App! This utility gives a user-pleasant platform 
 </p>
 
 You can find the working video [here](https://drive.google.com/file/d/1-n9I72-D_MD5S5JvHDFFBsyszy0Q95n0/view?usp=sharing).
+
+## Future Scope
+1. **Improving the User Interface:** Putting in place more logical and aesthetically pleasing designs. To make an experience more engaging, this can entail adding animations, improved layouts, and taking user feedback into account.
+2. **Including Extra Features:** To give users more thorough information and insights price alerts, historical data analysis and charts functions can be provided.
+3. **Implementing sophisticated Authentication:** To safeguard user accounts and sensitive financial information, adopt sophisticated authentication mechanisms such as biometric authentication (fingerprint, face recognition) or two-factor authentication (2FA).
+4. **Portfolio Analysis and Insights:** Develop algorithms or incorporate third-party APIs for portfolio analysis and insights, including diversification analysis, risk assessment, and performance evaluations against benchmarks. Users can utilise this to make well-informed investing decisions.
+5. **Social Features:** Introduce social features that let users connect with one another and share their stock picks, investment methods, and portfolio performance. This can involve tools like the ability to follow other users, leave comments on their portfolios, and build investment communities inside the software.
+   
 ### References
 
 1. [News API](https://newsapi.org/)
