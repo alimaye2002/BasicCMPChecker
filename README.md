@@ -15,15 +15,15 @@ Welcome to the Stock Portfolio App! This utility gives a user-pleasant platform 
 ## Screens
 
 <p align="center">
-  <img src="https://github.com/alimaye2002/BasicCMPChecker/assets/77532544/542ede94-7aa3-4a36-8651-d6436a6b99e2" alt="Register" width="150" height="300">
-  <img src="https://github.com/alimaye2002/BasicCMPChecker/assets/77532544/8b8ef4f9-5771-445a-9116-aeb00d0e9548" alt="SignIn" width="150" height="300">
-  <img src="https://github.com/alimaye2002/BasicCMPChecker/assets/77532544/4e290875-5b3d-4549-aa35-3fe2e35de9f0" alt="Portfolio" width="150" height="300">
+  <img src="https://github.com/alimaye2002/BasicCMPChecker/assets/77532544/a1510595-8854-49de-be68-40db4b2a874b" alt="Register" width="150" height="300">
+  <img src="https://github.com/alimaye2002/BasicCMPChecker/assets/77532544/06041863-3077-4da4-bba8-44c652b25f4e" alt="SignIn" width="150" height="300">
+  <img src="https://github.com/alimaye2002/BasicCMPChecker/assets/77532544/ef9ac42d-f2d7-4e4b-811a-39531d142d15" alt="Portfolio" width="150" height="300">
 </p>
 
 <p align="center">
-  <img src="https://github.com/alimaye2002/BasicCMPChecker/assets/77532544/d342ca44-9dd0-488c-b71f-35a6f1a0b570" alt="AddStock" width="150" height="300">
-  <img src="https://github.com/alimaye2002/BasicCMPChecker/assets/77532544/0f1d1d97-46b2-415d-8ddd-ea38f8db61ad" alt="Currency" width="150" height="300">
-  <img src="https://github.com/alimaye2002/BasicCMPChecker/assets/77532544/080a9612-9063-4da5-bbe8-c2ca1b2e763a" alt="Index" width="150" height="300">
+  <img src="https://github.com/alimaye2002/BasicCMPChecker/assets/77532544/1f85b23b-40de-4c91-aef6-f42f4e1bcc8b" alt="AddStock" width="150" height="300">
+  <img src="https://github.com/alimaye2002/BasicCMPChecker/assets/77532544/9121408f-346b-457b-a835-8a59845d58e8" alt="Currency" width="150" height="300">
+  <img src="https://github.com/alimaye2002/BasicCMPChecker/assets/77532544/3688d997-9acd-4e98-b477-c3c1c5535579" alt="Index" width="150" height="300">
 </p>
 
 You can find the working video [here](https://drive.google.com/file/d/1-n9I72-D_MD5S5JvHDFFBsyszy0Q95n0/view?usp=sharing).
